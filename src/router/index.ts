@@ -1,33 +1,38 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import TabsPage from '../views/TabsPage.vue'
+import TabsPage from '@/views/TabsPage.vue'
+import FeedPage from "@/views/FeedPage.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/tabs/'
   },
   {
     path: '/tabs/',
     component: TabsPage,
     children: [
       {
-        path: '',
-        redirect: '/tabs/tab1'
+        path: 'feed',
+        name: "Feed",
+        component: () => FeedPage
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue')
+        path: "feed/blog",
+        name: "View Blog",
+        component: () => import("@/views/ViewBlog.vue")
       },
       {
-        path: 'tab2',
-        component: () => import('@/views/Tab2Page.vue')
-      },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue')
+        path: "feed/script",
+        name: "View Script",
+        component: () => import("@/views/ViewScript.vue")
       }
     ]
+  },
+  {
+    path: "/bigfeature/",
+    name: "Big Feature",
+    component: () => import("@/views/FeatureHome.vue")
   }
 ]
 
