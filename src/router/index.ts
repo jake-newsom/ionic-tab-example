@@ -13,6 +13,10 @@ const routes: Array<RouteRecordRaw> = [
     component: TabsPage,
     children: [
       {
+        path: '',
+        redirect: '/tabs/feed'
+      },
+      {
         path: 'feed',
         name: "Feed",
         component: () => FeedPage
